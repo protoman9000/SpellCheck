@@ -10,7 +10,10 @@ namespace SpellCheck
     {
         static void Main(string[] args)
         {
-            string[] words = new string[2];
+            Console.WriteLine("How many words?");
+            string entry = Console.ReadLine();
+            int number = Convert.ToInt16(entry);
+            string[] words = new string[number];
         }
     }
 }
