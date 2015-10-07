@@ -25,9 +25,14 @@ namespace SpellCheck
                 x++;
             }
 
-            using (StreamReader r = File.OpenText(@"C:\Users\Aziz\Downloads\Dict.txt"))
+            string line;
+            StreamReader r = File.OpenText(@"C:\Users\Aziz\Downloads\Dict.txt");
+            while ((line = r.ReadLine()) != null)
             {
+                foreach (string word2 in words)
+                {
 
+                }
             }
         }
     }
