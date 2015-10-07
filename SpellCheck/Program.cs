@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace SpellCheck
 {
@@ -19,7 +20,14 @@ namespace SpellCheck
             {
                 int x = 1;
                 Console.WriteLine("Enter word number" + x + ":");
+                string insert = Console.ReadLine();
+                words[x] = insert;
                 x++;
+            }
+
+            using (StreamReader r = File.OpenText(@"C:\Users\Aziz\Downloads\Dict.txt"))
+            {
+
             }
         }
     }
