@@ -14,6 +14,13 @@ namespace SpellCheck
             string entry = Console.ReadLine();
             int number = Convert.ToInt16(entry);
             string[] words = new string[number];
+
+            foreach (string word in words)
+            {
+                int x = 1;
+                Console.WriteLine("Enter word number" + x + ":");
+                x++;
+            }
         }
     }
 }
