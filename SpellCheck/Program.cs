@@ -20,9 +20,9 @@ namespace SpellCheck
             foreach (string word in words)
             {
                 int x = 1;
-                Console.WriteLine("Enter word number" + x + ":");
+                Console.WriteLine("Enter word number " + x + ":");
                 string insert = Console.ReadLine();
-                words[x] = insert;
+                words[x - 1] = insert;
                 x++;
             }
             
