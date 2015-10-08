@@ -24,16 +24,26 @@ namespace SpellCheck
                 words[x] = insert;
                 x++;
             }
-
-            string line;
-            StreamReader r = File.OpenText(@"C:\Users\Aziz\Downloads\Dict.txt");
-            while ((line = r.ReadLine()) != null)
+            
+            foreach (string word2 in words)
             {
-                foreach (string word2 in words)
+                string line;
+                StreamReader r = File.OpenText(@"C:\Users\Aziz\Downloads\Dict.txt");
+                while ((line = r.ReadLine()) != null)
                 {
+                    
+                    for(int set = 0; set <= word2.Length; set++)
+                    {
+                        if (word2.Substring(set).Contains(line))
+                        {
 
+                        }
+                    }
                 }
             }
+           
+            
+            
         }
     }
 }
