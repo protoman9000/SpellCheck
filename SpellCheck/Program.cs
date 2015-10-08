@@ -31,11 +31,18 @@ namespace SpellCheck
             {
                 string line;
                 StreamReader r = File.OpenText(@"C:\Users\Aziz\Downloads\Dict.txt");
-                while ((line = r.ReadLine()) != null)
-                {                   
-                    for(int set = 0; set <= word2.Length; set++)
+                line = r.ReadLine();
+                foreach (var x in line)
+                {
+                    string tmp = x.ToString();
+                    if (word2.Substring(0) != tmp.Substring(0))
                     {
-                        if (word2.Substring(set).Contains(line))
+                        continue;
+                    }
+                    
+                    for (int set = 0; set <= word2.Length; set++)
+                    {
+                        if (word2.Substring(set) != tmp.Substring(set))
                         {
                             continue;
                         }
@@ -44,16 +51,14 @@ namespace SpellCheck
                             StringBuilder sb = new StringBuilder();
                             sb.Append(word2);
                             sb.Insert(set, ">");
-                            string tmp = word2;
-                            tmp = sb.ToString();
-                            Console.WriteLine(tmp);
-                        }
-                    }
+                            string tmp2 = word2;
+                            tmp2 = sb.ToString();
+                            Console.WriteLine(tmp2);
+                       }
+                   }                                      
                 }
             }
-           
-            
-            
-        }
+        }                       
     }
 }
+
