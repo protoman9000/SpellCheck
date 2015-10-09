@@ -25,40 +25,38 @@ namespace SpellCheck
                 words[x - 1] = insert;
                 x++;
             }
-            
+
             //the plan is to check the words, character by character until we get a mismatch
             foreach (string word2 in words)
             {
                 string line;
-                StreamReader r = File.OpenText(@"C:\Users\Aziz\Downloads\Dict.txt");
-                line = r.ReadLine();
-                foreach (var x in line)
+                using (StreamReader r = File.OpenText(@"C:\Users\Aziz\Downloads\Dict.txt"))
                 {
-                    string tmp = x.ToString();
-                    if (word2.Substring(0) != tmp.Substring(0))
+                    while ((line = r.ReadLine()) != null)
                     {
-                        continue;
-                    }
-                    
-                    for (int set = 0; set <= word2.Length; set++)
-                    {
-                        if (word2.Substring(set) != tmp.Substring(set))
+                        if (word2.Substring(0) != line.Substring(0))
                         {
                             continue;
                         }
-                        else
+                        for (int set = 0; set <= word2.Length; set++)
                         {
-                            StringBuilder sb = new StringBuilder();
-                            sb.Append(word2);
-                            sb.Insert(set, ">");
-                            string tmp2 = word2;
-                            tmp2 = sb.ToString();
-                            Console.WriteLine(tmp2);
-                       }
-                   }                                      
+                            if (word2.Substring(set) != line.Substring(set))
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                StringBuilder sb = new StringBuilder();
+                                sb.Append(word2);
+                                sb.Insert(set, ">");
+                                string tmp2 = word2;
+                                tmp2 = sb.ToString();
+                                Console.WriteLine(tmp2);
+                            }
+                        }
+                    }
                 }
             }
-        }                       
+        }
     }
 }
-
