@@ -30,29 +30,29 @@ namespace SpellCheck
             foreach (string word2 in words)
             {
                 string line;
+                int set = 0;
+                int v = 1;
                 using (StreamReader r = File.OpenText(@"C:\Users\Aziz\Downloads\Dict.txt"))
                 {
                     while ((line = r.ReadLine()) != null)
                     {
-                        if (word2.Substring(0) != line.Substring(0))
+                        if (word2.Substring(set, v) != line.Substring(set, v))
                         {
                             continue;
                         }
-                        for (int set = 0; set <= word2.Length; set++)
+                        if (word2.Substring(set, v) == line.Substring(set, v))
                         {
-                            if (word2.Substring(set) != line.Substring(set))
-                            {
-                                continue;
-                            }
-                            else
-                            {
-                                StringBuilder sb = new StringBuilder();
-                                sb.Append(word2);
-                                sb.Insert(set, ">");
-                                string tmp2 = word2;
-                                tmp2 = sb.ToString();
-                                Console.WriteLine(tmp2);
-                            }
+                            set++;
+                            v++;
+                        }
+                        else
+                        {
+                            StringBuilder sb = new StringBuilder();
+                            sb.Append(word2);
+                            sb.Insert(set, ">");
+                            string tmp2 = word2;
+                            tmp2 = sb.ToString();
+                            Console.WriteLine(tmp2);
                         }
                     }
                 }
