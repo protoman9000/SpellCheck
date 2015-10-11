@@ -45,15 +45,12 @@ namespace SpellCheck
                             set++;
                             v++;
                         }
-                        else
-                        {
                             StringBuilder sb = new StringBuilder();
                             sb.Append(word2);
                             sb.Insert(set, ">");
                             string tmp2 = word2;
                             tmp2 = sb.ToString();
-                            Console.WriteLine(tmp2);
-                        }
+                            Console.WriteLine(tmp2);                      
                     }
                 }
             }
