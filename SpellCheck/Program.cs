@@ -43,6 +43,14 @@ namespace SpellCheck
                         {
                             if (word2.Substring(0, v) == line.Substring(0, (k - (x - 1))))
                             {
+                                try
+                                {
+
+                                }
+                                catch(ArgumentOutOfRangeException e)
+                                {
+                                    continue;
+                                }
                                 set++;
                                 v++;
                                 x--;
@@ -53,11 +61,11 @@ namespace SpellCheck
                             }                                          
                         }
                     }
-                            StringBuilder sb = new StringBuilder();
-                            sb.Append(word2);
-                            sb.Insert(set, ">");
-                            tmp2 = word2;
-                            tmp2 = sb.ToString();                                                 
+                        StringBuilder sb = new StringBuilder();
+                        sb.Append(word2);
+                        sb.Insert(set, ">");
+                        tmp2 = word2;
+                        tmp2 = sb.ToString();                                                                       
                     }                   
                 }
             }
