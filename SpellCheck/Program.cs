@@ -39,18 +39,17 @@ namespace SpellCheck
                     {
                         int k = line.Length;
                         int x = k;
+                        
+                        //If the first letter of both words do not match, it will skip. 
+                        if (word2.Substring(0, 1) != line.Substring(0, 1))
+                        {
+                            continue;
+                        }
+                        
                         while (set <= word2.Length)
                         {
                             if (word2.Substring(0, v) == line.Substring(0, (k - (x - 1))))
                             {
-                                try
-                                {
-
-                                }
-                                catch(ArgumentOutOfRangeException e)
-                                {
-                                    continue;
-                                }
                                 set++;
                                 v++;
                                 x--;
