@@ -32,13 +32,18 @@ namespace SpellCheck
                 string line;
                 string tmp2;
                 int set = 0;
+                int set2 = 0;
                 int v = 1;
+                int check = 0;
                 using (StreamReader r = File.OpenText(@"C:\Users\Aziz\Downloads\Dict.txt"))
                 {
                     while ((line = r.ReadLine()) != null)
                     {
                         int k = line.Length;
                         int x = k;
+                        set = 0;
+                        set2 = 0;
+                        v = 1;
                         
                         //If the first letter of both words do not match, it will skip. 
                         if (word2.Substring(0, 1) != line.Substring(0, 1))
@@ -46,25 +51,35 @@ namespace SpellCheck
                             continue;
                         }
                         
-                        while (set <= word2.Length)
+                        while (set < line.Length)
                         {
                             if (word2.Substring(0, v) == line.Substring(0, (k - (x - 1))))
                             {
                                 set++;
                                 v++;
                                 x--;
+                                check = set;
                             }
                             else
                             {
+                                if (check < set)
+                                {
+                                    set2 = set;
+                                    set++;
+                                    continue;
+                                }
+                                set2 = check;
                                 continue;
                             }                                          
                         }
                     }
                         StringBuilder sb = new StringBuilder();
                         sb.Append(word2);
-                        sb.Insert(set, ">");
+                        sb.Insert(set2, ">");
                         tmp2 = word2;
-                        tmp2 = sb.ToString();                                                                       
+                        tmp2 = sb.ToString();
+                        Console.WriteLine(tmp2);
+                        Console.ReadKey();                               
                     }                   
                 }
             }
