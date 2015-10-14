@@ -58,18 +58,23 @@ namespace SpellCheck
                                 set++;
                                 v++;
                                 x--;
-                                check = set;
+                                set2 = set;
                             }
                             else
                             {
-                                if (check < set)
+                                check = set;
+                                if (check <= set)
                                 {
                                     set2 = set;
                                     set++;
                                     continue;
                                 }
-                                set2 = check;
-                                continue;
+                                else
+                                {
+                                    set2 = check;
+                                    set++;
+                                    continue;
+                                }                                
                             }                                          
                         }
                     }
