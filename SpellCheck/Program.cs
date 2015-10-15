@@ -15,11 +15,11 @@ namespace SpellCheck
             string entry = Console.ReadLine();
             int number = Convert.ToInt16(entry);
             string[] words = new string[number];
+            int x = 1;
 
             //Entering in the words we want to check.
             foreach (string word in words)
-            {
-                int x = 1;
+            {               
                 Console.WriteLine("Enter word number " + x + ":");
                 string insert = Console.ReadLine();
                 words[x - 1] = insert;
@@ -41,7 +41,7 @@ namespace SpellCheck
                     while ((line = r.ReadLine()) != null)
                     {
                         int k = line.Length;
-                        int x = k;
+                        int l = k;
                         num = 0;
                         set = 0;
                         set2 = 0;
@@ -55,12 +55,12 @@ namespace SpellCheck
                         
                         while (num < line.Length)
                         {
-                            if (word2.Substring(0, v) == line.Substring(0, (k - (x - 1))))
+                            if (word2.Substring(0, v) == line.Substring(0, (k - (l - 1))))
                             {
                                 num++;
                                 set++;
                                 v++;
-                                x--;
+                                l--;
                             }
                             else
                             {
