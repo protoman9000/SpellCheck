@@ -31,6 +31,7 @@ namespace SpellCheck
             {
                 string line;
                 string tmp2;
+                int num = 0;
                 int set = 0;
                 int set2 = 0;
                 int v = 1;
@@ -41,46 +42,45 @@ namespace SpellCheck
                     {
                         int k = line.Length;
                         int x = k;
+                        num = 0;
                         set = 0;
                         set2 = 0;
                         v = 1;
                         
                         //If the first letter of both words do not match, it will skip. 
-                        if (word2.Substring(0, 1) != line.Substring(0, 1))
+                        if (word2.Substring(0, 1) != line.Substring(0, 1) || word2.Length != line.Length)
                         {
                             continue;
                         }
                         
-                        while (set < line.Length)
+                        while (num < line.Length)
                         {
                             if (word2.Substring(0, v) == line.Substring(0, (k - (x - 1))))
                             {
+                                num++;
                                 set++;
                                 v++;
                                 x--;
-                                set2 = set;
                             }
                             else
                             {
-                                check = set;
-                                if (check <= set)
+                                if (check > set)
                                 {
-                                    set2 = set;
-                                    set++;
-                                    continue;
+                                    num++;
                                 }
                                 else
                                 {
-                                    set2 = check;
-                                    set++;
-                                    continue;
-                                }                                
+                                    set2 = set;
+                                    check = set2;
+                                    num++;
+                                }
+                                continue;
                             }                                          
                         }
                     }
                         StringBuilder sb = new StringBuilder();
                         sb.Append(word2);
-                        sb.Insert(set2, ">");
+                        sb.Insert(check + 1, "<");
                         tmp2 = word2;
                         tmp2 = sb.ToString();
                         Console.WriteLine(tmp2);
