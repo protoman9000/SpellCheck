@@ -11,6 +11,7 @@ namespace SpellCheck
     {
         static void Main(string[] args)
         {
+            //Entering how many words the program is going to check
             Console.WriteLine("How many words?");
             string entry = Console.ReadLine();
             int number = Convert.ToInt16(entry);
@@ -29,12 +30,14 @@ namespace SpellCheck
             //the plan is to check the words, character by character until we get a mismatch
             foreach (string word2 in words)
             {
+                //the int set represent the counter in order to check the position where the mistake happens
                 string line;
                 string tmp2;
                 int num = 0;
                 int set = 0;
                 int set2 = 0;
                 int v = 1;
+                //the int check makes sure if the counter is higher or lower than the original counter.
                 int check = 0;
                 using (StreamReader r = File.OpenText(@"C:\Users\Aziz\Downloads\Dict.txt"))
                 {
@@ -55,6 +58,7 @@ namespace SpellCheck
                         
                         while (num < line.Length)
                         {
+                            //comparing each word by characters and increasing it by one.
                             if (word2.Substring(0, v) == line.Substring(0, (k - (l - 1))))
                             {
                                 num++;
@@ -64,12 +68,14 @@ namespace SpellCheck
                             }
                             else
                             {
+                                //if the original counter is higher, it stays the same
                                 if (check > set)
                                 {
                                     num++;
                                 }
                                 else
                                 {
+                                    //if the counter is lower than we switch with the tmp creating a new counter
                                     set2 = set;
                                     check = set2;
                                     num++;
@@ -78,6 +84,7 @@ namespace SpellCheck
                             }                                          
                         }
                     }
+                        //once we get the final counter number the position of the mistake is set. 
                         StringBuilder sb = new StringBuilder();
                         sb.Append(word2);
                         sb.Insert(check + 1, "<");
